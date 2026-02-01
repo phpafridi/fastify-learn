@@ -18,7 +18,7 @@ app.register(cors);
 app.register(helmet);
 app.register(dbPlugin);
 app.register(jwt,jwtOptions);
-app.register(authPlugin)
+//app.register(authPlugin)
 app.register(authRoutes);
 app.register(userRoutes);
 
