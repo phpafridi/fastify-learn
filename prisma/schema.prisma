@@ -1,0 +1,24 @@
+
+generator client {
+  provider = "prisma-client-js"
+ 
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")  // This works in Prisma 6
+
+  
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String
+  password String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users")
+  @@index([name], name:"idx_name")
+}
