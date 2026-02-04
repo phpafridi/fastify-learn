@@ -15,7 +15,12 @@ const userRoutes = async (
     })
 
     app.get('/allUsers',async(req:FastifyRequest,reply:FastifyReply)=>{
-         const users = await app.prisma.user.findMany()
+         const users = await app.prisma.user.findMany({
+            select : {
+                name : true,
+                email : true
+            }
+         })
          return reply.status(200).send({data:users})
     })
 }

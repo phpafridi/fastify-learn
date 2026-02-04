@@ -66,6 +66,17 @@ const authRoutes = async (
         return reply.send({ message: "Logged In Successful!", user : {...payload,token} })
 
     })
+
+        app.get('/test', async (req: FastifyRequest, reply: FastifyReply) => {
+        console.log('✅ Test endpoint hit from IP:', req.ip);
+        return reply.send({ 
+            success: true,
+            message: 'Auth server is working!',
+            timestamp: new Date().toISOString(),
+            clientIp: req.ip,
+            endpoints: ['/register', '/login', '/test']
+        });
+    });
 }
 
 export default fp(authRoutes)
